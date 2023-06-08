@@ -1,16 +1,54 @@
-# Tauri + Vue 3 + TypeScript
+# ⛏ Zeperion
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Stars](https://img.shields.io/github/stars/Meinil/zeperion)
 
-## Recommended IDE Setup
+## 简介
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+Zeperion是由Rust+Vue构建的一款跨平台我的世界开服器
 
-## Type Support For `.vue` Imports in TS
+## 支持
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+1. 列表(服务器实例)
+   - [x] 一键启动
+   - [x] 实时日志查看
+   - [x] 编辑实例配置/查看
+   - [x] 打开实例文件目录
+   - [ ] 实例插件配置
+2. 下载(核心下载)
+   - [x] 一键下载
+   - [x] 导入资源
+   - [x] 资源配置(编辑)
+3. 镜像(已下载的核心)
+   - [x] 一键创建服务器
+   - [x] 导入本地镜像
+4. 设置(全局参数调整)
+   - [x] 
+   - [x] 调整缓存路径
+   - [x] 调整JAVA路径
+   - [ ] 调整虚拟机参数
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+## 开发
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+1. 安装Rust
+
+2. 安装node，版本为`18.16.0`
+
+3. 安装依赖
+
+   ```shell
+   npm install
+   ```
+
+4. 运行
+
+   ```shell
+   npm run tauri dev
+   ```
+
+5. 打包
+
+   ```shell
+   npm run tauri build
+   ```
+
+   
