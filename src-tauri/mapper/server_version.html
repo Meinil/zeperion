@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+  <select id="query_version_by_id">
+    SELECT
+      *
+    FROM
+      server_version
+    WHERE
+      is_deleted = '0'
+      AND id = #{id}
+  </select>
+  <select id="query_version_by_brand_id">
+    SELECT
+      *
+    FROM
+      server_version
+    WHERE
+      is_deleted = '0'
+      AND brand_id = #{brand_id}
+      AND version = #{version}
+  </select>
+  <insert id="insert_server_version">
+    INSERT INTO
+      server_version(brand_id, version)
+    VALUES
+      (#{brand_id}, #{version})
+  </insert>
+</mapper>

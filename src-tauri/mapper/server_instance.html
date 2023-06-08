@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+  <select id="query_instance_vo_by_id">
+    SELECT
+      si1.id,
+      si1.name,
+      si1.path,
+      si1.t_id,
+      si1.p_id,
+      si1.item_id,
+      sb.brand,
+      sv.version,
+      si1.remark,
+      si1.vm_options
+    FROM
+      server_instance si1
+      LEFT JOIN server_item si2 ON si1.item_id = si2.id
+      LEFT JOIN server_brand sb ON si2.brand_id = sb.id
+      LEFT JOIN server_version sv ON si2.version_id = sv.id
+    WHERE
+      si1.is_deleted = '0'
+      AND si2.is_deleted = '0'
+      AND sb.is_deleted = '0'
+      AND sv.is_deleted = '0'
+      AND si1.id = #{id}
+  </select>
+  <select id="query_instance_by_id">
+    SELECT
+      *
+    FROM
+      server_instance
+    WHERE
+      is_deleted = '0'
+      AND id = #{id}
+  </select>
+  <update id="update_server_instance_p_id">
+    UPDATE
+      server_instance
+    SET 
+      p_id = #{p_id},
+      t_id = #{t_id}
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+  <update id="update_server_instance_t_id">
+    UPDATE
+      server_instance
+    SET 
+      t_id = #{t_id}
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+  <update id="update_server_instance_by_id">
+    UPDATE
+      server_instance
+    SET 
+      name = #{name},
+      remark = #{remark},
+      vm_options = #{vm_options}
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+  <update id="remove_instance_by_id">
+    UPDATE
+      server_instance
+    SET 
+      is_deleted = '1'
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+  <select id="query_instance_by_item_id">
+    SELECT
+      *
+    FROM
+      server_instance
+    WHERE
+      is_deleted = '0'
+      AND item_id = #{item_id}
+  </select>
+  <select id="query_instance_p_id_not_null">
+    SELECT
+      *
+    FROM
+      server_instance
+    WHERE
+      is_deleted = '0'
+      AND p_id IS NOT NULL
+      AND p_id != ''
+  </select>
+</mapper>

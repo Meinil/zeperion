@@ -1,0 +1,38 @@
+$namespace: 'zn' !default;
+$blcok-sel: '-' !default;
+$elem-sel: '__' !default;
+$mod-sel: '--' !default;
+
+@mixin b($block) {
+  $B: #{$namespace + $blcok-sel + $block};
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($el) {
+  $selector: &;
+  @at-root {
+    #{$selector + $elem-sel + $el} {
+      @content;
+    }
+  }
+}
+
+@mixin m($m) {
+  $selector: &;
+  @at-root {
+    #{$selector + $mod-sel + $m} {
+      @content;
+    }
+  }
+}
+
+@mixin bfc {
+  height: 100%;
+  overflow: hidden;
+}
+
+@mixin zn-shadow {
+  box-shadow: rgba(0, 0, 0, .1) 1px 1px 4px 0px;
+}

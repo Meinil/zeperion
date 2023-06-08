@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+  <select id="query_server_page">
+    SELECT 
+      si.id,
+      sb.id brand_id,
+      sb.brand,
+      sv.id version_id,
+      sv.version,
+      si.download_url 
+    FROM 
+      server_brand sb
+      LEFT JOIN server_item si ON sb.id = si.brand_id
+      LEFT JOIN server_version sv ON si.version_id = sv.id
+    WHERE
+      sb.is_deleted = '0'
+      AND si.is_deleted = '0'
+      AND sv.is_deleted = '0'
+      AND si.is_download = #{query_vo.is_download}
+      <if test="query_vo.brand_id != null">
+        AND sb.id = #{query_vo.brand_id}
+      </if>
+      <if test="query_vo.version_id != null">
+        AND sv.id = #{query_vo.version_id}
+      </if>
+    ORDER BY
+      si.id
+  </select>
+  <select id="query_server_brand_by_id">
+    SELECT
+      *
+    FROM
+      server_brand
+    WHERE
+      is_deleted = '0'
+      AND id = #{id}
+  </select>
+  <select id="query_server_brand_by_brand">
+    SELECT
+      *
+    FROM
+      server_brand
+    WHERE
+      is_deleted = '0'
+      AND LOWER(brand) = LOWER(#{brand})
+  </select>
+  <insert id="insert_server_brand">
+    INSERT INTO
+      server_brand(brand)
+    VALUES
+      (#{brand})
+  </insert>
+</mapper>

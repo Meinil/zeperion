@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://raw.githubusercontent.com/rbatis/rbatis/master/rbatis-codegen/mybatis-3-mapper.dtd">
+<mapper>
+  <select id="query_item_by_id">
+    SELECT
+      *
+    FROM
+      server_item
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </select>
+  <update id="update_server_item_download">
+    UPDATE
+      server_item
+    SET 
+      is_download = #{is_download}
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+  <update id="update_server_item">
+    UPDATE
+      server_item
+    SET 
+      brand_id = #{item.brand_id},
+      version_id = #{item.version_id},
+      download_url = #{item.download_url}
+    WHERE
+      id = #{item.id}
+      AND is_deleted = '0'
+  </update>
+  <insert id="insert_server_item">
+    INSERT INTO
+      server_item(brand_id, version_id, download_url)
+    VALUES
+      (#{brand_id}, #{version_id}, #{download_url})
+  </insert>
+  <select id="query_server_item">
+    SELECT
+      *
+    FROM
+      server_item
+    WHERE
+      is_deleted = '0'
+      AND brand_id = #{brand_id}
+      AND version_id = #{version_id}
+  </select>
+  <update id="remove_server_item_by_id">
+    UPDATE
+      server_item
+    SET 
+      is_deleted = '1'
+    WHERE
+      id = #{id}
+      AND is_deleted = '0'
+  </update>
+</mapper>
