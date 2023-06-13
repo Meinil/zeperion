@@ -2,6 +2,8 @@
 
 ![Stars](https://img.shields.io/github/stars/Meinil/zeperion)
 
+此项目已停止维护,v2项目正在开发中...
+
 ## 简介
 
 Zeperion是由Rust+Vue构建的一款跨平台我的世界开服器
@@ -22,7 +24,6 @@ Zeperion是由Rust+Vue构建的一款跨平台我的世界开服器
    - [x] 一键创建服务器
    - [x] 导入本地镜像
 4. 设置(全局参数调整)
-   - [x] 
    - [x] 调整缓存路径
    - [x] 调整JAVA路径
    - [ ] 调整虚拟机参数
