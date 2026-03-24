@@ -1,0 +1,17 @@
+[application]
+name = "zeperion-launcher"
+default_platform = "desktop"
+asset_dir = "assets"
+out_dir = "dist"
+
+[web.app]
+title = "Zeperion Launcher"
+
+[web.resource]
+style = ["./assets/main.css"]
+
+[web.resource.dev]
+style = ["./assets/main.css"]
+
+[web.watcher]
+watch_path = ["src", "assets", "locales", "migrations"]
